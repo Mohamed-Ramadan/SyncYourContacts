@@ -23,4 +23,22 @@ struct ContactDTO {
 struct MobileNumberDTO {
     let number: String  
 }
+
 //MARK: Mapping To Domain
+extension ContactsResponseDTO {
+    func toDomain() -> Contacts {
+        return .init(contacts: contacts.map{ $0.toDomain()})
+    }
+}
+
+extension ContactDTO {
+    func toDomain() -> Contact {
+        return .init(identifier: identifier, name: name, email: email, mobileNumbers: mobileNumbers.map{$0.toDomain()})
+    }
+}
+
+extension MobileNumberDTO {
+    func toDomain() -> MobileNumber {
+        return .init(number: number)
+    }
+}
