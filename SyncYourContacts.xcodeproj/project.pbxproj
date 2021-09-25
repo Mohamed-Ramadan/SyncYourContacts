@@ -11,11 +11,16 @@
 		FAB2593926FF3C0F002A10B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2593826FF3C0F002A10B9 /* SceneDelegate.swift */; };
 		FAB2593B26FF3C0F002A10B9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2593A26FF3C0F002A10B9 /* ViewController.swift */; };
 		FAB2593E26FF3C0F002A10B9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB2593C26FF3C0F002A10B9 /* Main.storyboard */; };
-		FAB2594126FF3C0F002A10B9 /* SyncYourContacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAB2593F26FF3C0F002A10B9 /* SyncYourContacts.xcdatamodeld */; };
 		FAB2594326FF3C12002A10B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FAB2594226FF3C12002A10B9 /* Assets.xcassets */; };
 		FAB2594626FF3C12002A10B9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAB2594426FF3C12002A10B9 /* LaunchScreen.storyboard */; };
 		FAB2595126FF3C12002A10B9 /* SyncYourContactsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2595026FF3C12002A10B9 /* SyncYourContactsTests.swift */; };
 		FAB2595C26FF3C12002A10B9 /* SyncYourContactsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2595B26FF3C12002A10B9 /* SyncYourContactsUITests.swift */; };
+		FAB2597126FF3D33002A10B9 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2597026FF3D33002A10B9 /* CoreDataStorage.swift */; };
+		FAB2597426FF3D76002A10B9 /* ContactsResponseStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2597326FF3D76002A10B9 /* ContactsResponseStorage.swift */; };
+		FAB2597626FF3D83002A10B9 /* DefaultContactsCoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2597526FF3D83002A10B9 /* DefaultContactsCoreDataStorage.swift */; };
+		FAB2597D26FF3F8C002A10B9 /* ContactsResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2597C26FF3F8C002A10B9 /* ContactsResponseDTO+Mapping.swift */; };
+		FAB2597F26FF4034002A10B9 /* ContactsResponseEntity+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAB2597E26FF4034002A10B9 /* ContactsResponseEntity+Mapping.swift */; };
+		FAB2598026FF444F002A10B9 /* SyncYourContacts.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAB2593F26FF3C0F002A10B9 /* SyncYourContacts.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +56,11 @@
 		FAB2595726FF3C12002A10B9 /* SyncYourContactsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SyncYourContactsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAB2595B26FF3C12002A10B9 /* SyncYourContactsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncYourContactsUITests.swift; sourceTree = "<group>"; };
 		FAB2595D26FF3C12002A10B9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAB2597026FF3D33002A10B9 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
+		FAB2597326FF3D76002A10B9 /* ContactsResponseStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsResponseStorage.swift; sourceTree = "<group>"; };
+		FAB2597526FF3D83002A10B9 /* DefaultContactsCoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultContactsCoreDataStorage.swift; sourceTree = "<group>"; };
+		FAB2597C26FF3F8C002A10B9 /* ContactsResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactsResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		FAB2597E26FF4034002A10B9 /* ContactsResponseEntity+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContactsResponseEntity+Mapping.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +111,10 @@
 		FAB2593526FF3C0F002A10B9 /* SyncYourContacts */ = {
 			isa = PBXGroup;
 			children = (
-				FAB2593626FF3C0F002A10B9 /* AppDelegate.swift */,
-				FAB2593826FF3C0F002A10B9 /* SceneDelegate.swift */,
+				FAB2596926FF3C1C002A10B9 /* Application */,
+				FAB2596A26FF3C2B002A10B9 /* Presentation */,
+				FAB2596B26FF3C32002A10B9 /* Domain */,
+				FAB2596C26FF3C39002A10B9 /* Data */,
 				FAB2593A26FF3C0F002A10B9 /* ViewController.swift */,
 				FAB2593C26FF3C0F002A10B9 /* Main.storyboard */,
 				FAB2594226FF3C12002A10B9 /* Assets.xcassets */,
@@ -129,6 +141,113 @@
 				FAB2595D26FF3C12002A10B9 /* Info.plist */,
 			);
 			path = SyncYourContactsUITests;
+			sourceTree = "<group>";
+		};
+		FAB2596926FF3C1C002A10B9 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				FAB2593626FF3C0F002A10B9 /* AppDelegate.swift */,
+				FAB2593826FF3C0F002A10B9 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		FAB2596A26FF3C2B002A10B9 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		FAB2596B26FF3C32002A10B9 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		FAB2596C26FF3C39002A10B9 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				FAB2596F26FF3D08002A10B9 /* Source */,
+				FAB2597726FF3E31002A10B9 /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		FAB2596D26FF3C42002A10B9 /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				FAB2596E26FF3C47002A10B9 /* Core Data Storage */,
+				FAB2597226FF3D46002A10B9 /* Contacts Response Storage */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		FAB2596E26FF3C47002A10B9 /* Core Data Storage */ = {
+			isa = PBXGroup;
+			children = (
+				FAB2597026FF3D33002A10B9 /* CoreDataStorage.swift */,
+			);
+			path = "Core Data Storage";
+			sourceTree = "<group>";
+		};
+		FAB2596F26FF3D08002A10B9 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				FAB2597926FF3F17002A10B9 /* Remote */,
+				FAB2596D26FF3C42002A10B9 /* Local */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		FAB2597226FF3D46002A10B9 /* Contacts Response Storage */ = {
+			isa = PBXGroup;
+			children = (
+				FAB2597826FF3EE3002A10B9 /* Entity Mapping */,
+				FAB2597326FF3D76002A10B9 /* ContactsResponseStorage.swift */,
+				FAB2597526FF3D83002A10B9 /* DefaultContactsCoreDataStorage.swift */,
+			);
+			path = "Contacts Response Storage";
+			sourceTree = "<group>";
+		};
+		FAB2597726FF3E31002A10B9 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		FAB2597826FF3EE3002A10B9 /* Entity Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				FAB2597E26FF4034002A10B9 /* ContactsResponseEntity+Mapping.swift */,
+			);
+			path = "Entity Mapping";
+			sourceTree = "<group>";
+		};
+		FAB2597926FF3F17002A10B9 /* Remote */ = {
+			isa = PBXGroup;
+			children = (
+				FAB2597A26FF3F27002A10B9 /* Data Mapping */,
+			);
+			path = Remote;
+			sourceTree = "<group>";
+		};
+		FAB2597A26FF3F27002A10B9 /* Data Mapping */ = {
+			isa = PBXGroup;
+			children = (
+				FAB2597B26FF3F46002A10B9 /* Contacts */,
+			);
+			path = "Data Mapping";
+			sourceTree = "<group>";
+		};
+		FAB2597B26FF3F46002A10B9 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				FAB2597C26FF3F8C002A10B9 /* ContactsResponseDTO+Mapping.swift */,
+			);
+			path = Contacts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,10 +380,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FAB2594126FF3C0F002A10B9 /* SyncYourContacts.xcdatamodeld in Sources */,
+				FAB2597D26FF3F8C002A10B9 /* ContactsResponseDTO+Mapping.swift in Sources */,
+				FAB2597626FF3D83002A10B9 /* DefaultContactsCoreDataStorage.swift in Sources */,
+				FAB2597126FF3D33002A10B9 /* CoreDataStorage.swift in Sources */,
 				FAB2593B26FF3C0F002A10B9 /* ViewController.swift in Sources */,
+				FAB2598026FF444F002A10B9 /* SyncYourContacts.xcdatamodeld in Sources */,
+				FAB2597426FF3D76002A10B9 /* ContactsResponseStorage.swift in Sources */,
 				FAB2593726FF3C0F002A10B9 /* AppDelegate.swift in Sources */,
 				FAB2593926FF3C0F002A10B9 /* SceneDelegate.swift in Sources */,
+				FAB2597F26FF4034002A10B9 /* ContactsResponseEntity+Mapping.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
