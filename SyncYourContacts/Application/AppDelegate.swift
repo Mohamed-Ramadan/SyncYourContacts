@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Request Contacts Access
         CNContactStore().requestAccess(for: .contacts) { (access, error) in
             print("Access: \(access)")
-            self.fetchContacts()
+            //self.fetchContacts()
         }
         
         return true
@@ -40,29 +40,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
     
-    func fetchContacts() {
-        let contactsService: ContactsService = DefaultContactsService()
-        let repository: ContactsRepository = DefaultContactsRepository(contactsCache: DefaultContactsCoreDataStorage(), contactsService: contactsService)
-        let useCase: ContactsUseCase = DefaultContactsUseCase(contactsRepository: repository)
-        useCase.fetchContacts { contacts in
-            print("Cached Contacts:")
-            self.printContacts(contacts: contacts.contacts)
-        } completion: { (result) in
-            switch result {
-                case .success(let model):
-                    print("Fetched Contacts:")
-                    self.printContacts(contacts: model.contacts)
-                case .failure(let error):
-                    print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func printContacts(contacts: [Contact]) {
-        for contact in contacts {
-            print("\(contact.name) - \(contact.mobileNumbers.map{ $0.number}.joined(separator: " , ")) - \(contact.emailAddresses.joined(separator: " , "))")
-        }
-    }
+//    func fetchContacts() {
+//        let contactsService: ContactsService = DefaultContactsService()
+//        let repository: ContactsRepository = DefaultContactsRepository(contactsCache: DefaultContactsCoreDataStorage(), contactsService: contactsService)
+//        let useCase: ContactsUseCase = DefaultContactsUseCase(contactsRepository: repository)
+//        useCase.fetchContacts { contacts in
+//            print("Cached Contacts:")
+//            self.printContacts(contacts: contacts.contacts)
+//        } completion: { (result) in
+//            switch result {
+//                case .success(let model):
+//                    print("Fetched Contacts:")
+//                    self.printContacts(contacts: model.contacts)
+//                case .failure(let error):
+//                    print(error.localizedDescription)
+//            }
+//        }
+//    }
+//
+//    func printContacts(contacts: [Contact]) {
+//        for contact in contacts {
+//            print("\(contact.name) - \(contact.mobileNumbers.map{ $0.number}.joined(separator: " , ")) - \(contact.emailAddresses.joined(separator: " , "))")
+//        }
+//    }
     // MARK: - Core Data stack
     
     lazy var persistentContainer: NSPersistentContainer = {
