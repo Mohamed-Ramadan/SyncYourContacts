@@ -52,31 +52,20 @@ class ContactsTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell")!
+        var cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: "cell")
 
         if (cell != nil) {
             cell =  UITableViewCell.init(style: .subtitle, reuseIdentifier: "cell")
         }
         // Configure the cell...
         let contact = self.viewModel.contacts[indexPath.row]
-        cell.textLabel?.text = contact.name
-        cell.detailTextLabel?.text = contact.mobileNumbers.map{$0.number}.joined(separator: ", ")
+        cell!.textLabel?.text = contact.name
+        cell!.detailTextLabel?.text = contact.mobileNumbers.joined(separator: ", ")
         
-        return cell
+        return cell!
     }
      
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let contact = self.viewModel.contacts[indexPath.row]
-         
-        do {
-            let con = try CNContactStore().unifiedContact(withIdentifier: contact.identifier, keysToFetch: [])
-            let contactsVC = CNContactViewController(for: con)
-            self.navigationController?.pushViewController(contactsVC, animated: true)
-        } catch  {
-            print(error.localizedDescription)
-        }
-        
     }
-    
 }

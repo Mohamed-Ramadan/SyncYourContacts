@@ -15,10 +15,5 @@ struct Contact {
     let identifier: String
     let name: String
     let emailAddresses: [String]
-    let mobileNumbers: [MobileNumber]
-}
-
-struct MobileNumber {
-    let number: String
-}
-
+    let mobileNumbers: [String]
+} 

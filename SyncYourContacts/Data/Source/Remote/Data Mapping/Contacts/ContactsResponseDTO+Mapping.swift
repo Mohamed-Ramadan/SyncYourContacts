@@ -45,8 +45,8 @@ extension ContactDTO {
 }
 
 extension MobileNumberDTO {
-    func toDomain() -> MobileNumber {
-        return .init(number: number)
+    func toDomain() -> String {
+        return number
     }
 }
 
