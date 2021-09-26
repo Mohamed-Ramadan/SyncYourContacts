@@ -20,12 +20,7 @@ extension CNContact {
 
 extension CNLabeledValue where ValueType == CNPhoneNumber {
     func toDTO() -> MobileNumberDTO {
-        if let label = label {
-            let localizedLabel = CNLabeledValue<CNPhoneNumber>.localizedString(forLabel: label)
-            return .init(number: localizedLabel)
-        }
-        
-        return .init(number: "")
+        return .init(number: value.stringValue)
     }
 }
 
