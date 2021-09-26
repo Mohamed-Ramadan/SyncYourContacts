@@ -19,7 +19,7 @@ extension ContactResponseEntity {
     func toDTO() -> ContactDTO {
         return .init(identifier: identifier ?? "",
                      name: name ?? "",
-                     email: email ?? "",
+                     emailAddresses: emailAddresses?.map{ ($0 as! EmailAddressResponseEntity).toDTO()} ?? [],
                      mobileNumbers: phoneNumbers?.map{ ($0 as! PhoneNumberResponseEntity).toDTO()} ?? [])
     }
 }
@@ -27,6 +27,12 @@ extension ContactResponseEntity {
 extension PhoneNumberResponseEntity {
     func toDTO() -> MobileNumberDTO {
         return .init(number: number ?? "")
+    }
+}
+
+extension EmailAddressResponseEntity {
+    func toDTO() -> EmailDTO {
+        return .init(email: email ?? "")
     }
 }
 
@@ -47,7 +53,10 @@ extension ContactDTO {
         let entity: ContactResponseEntity = .init(context: context)
         entity.name = name
         entity.identifier = identifier
-        entity.email = email
+        emailAddresses.forEach {
+            entity.addToEmailAddresses($0.toEntity(in: context))
+        }
+        
         mobileNumbers.forEach {
             entity.addToPhoneNumbers($0.toEntity(in: context))
         }
@@ -59,6 +68,14 @@ extension MobileNumberDTO {
     func toEntity(in context: NSManagedObjectContext) -> PhoneNumberResponseEntity {
         let entity: PhoneNumberResponseEntity = .init(context: context)
         entity.number = number
+        return entity
+    }
+}
+
+extension EmailDTO {
+    func toEntity(in context: NSManagedObjectContext) -> EmailAddressResponseEntity {
+        let entity: EmailAddressResponseEntity = .init(context: context)
+        entity.email = email
         return entity
     }
 }

@@ -14,7 +14,7 @@ struct Contacts {
 struct Contact {
     let identifier: String
     let name: String
-    let email: String
+    let emailAddresses: [String]
     let mobileNumbers: [MobileNumber]
 }
 

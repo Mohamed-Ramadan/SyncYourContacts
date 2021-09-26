@@ -22,6 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           print("Access: \(access)")
         }
         
+        let contactsService: ContactsService = DefaultContactsService()
+        contactsService.getContacts { (result) in
+            switch result {
+            case .success(let model):
+                print(model.contacts)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+        
         return true
     }
 

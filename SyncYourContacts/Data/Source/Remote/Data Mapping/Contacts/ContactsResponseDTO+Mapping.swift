@@ -16,12 +16,16 @@ struct ContactsResponseDTO {
 struct ContactDTO {
     let identifier: String
     let name: String
-    let email: String
+    let emailAddresses: [EmailDTO]
     let mobileNumbers: [MobileNumberDTO]
 }
 
 struct MobileNumberDTO {
     let number: String  
+}
+
+struct EmailDTO {
+    let email: String
 }
 
 //MARK: Mapping To Domain
@@ -33,12 +37,21 @@ extension ContactsResponseDTO {
 
 extension ContactDTO {
     func toDomain() -> Contact {
-        return .init(identifier: identifier, name: name, email: email, mobileNumbers: mobileNumbers.map{$0.toDomain()})
+        return .init(identifier: identifier,
+                     name: name,
+                     emailAddresses: emailAddresses.map{ $0.toDomain()},
+                     mobileNumbers: mobileNumbers.map{$0.toDomain()})
     }
 }
 
 extension MobileNumberDTO {
     func toDomain() -> MobileNumber {
         return .init(number: number)
+    }
+}
+
+extension EmailDTO {
+    func toDomain() -> String {
+        return email
     }
 }

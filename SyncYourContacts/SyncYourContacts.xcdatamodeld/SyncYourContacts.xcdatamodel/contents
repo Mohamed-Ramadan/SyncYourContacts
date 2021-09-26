@@ -5,10 +5,15 @@
         <attribute name="identifier" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ContactsResponseEntity" inverseName="contacts" inverseEntity="ContactsResponseEntity"/>
+        <relationship name="emailAddresses" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="EmailAddressResponseEntity" inverseName="contact" inverseEntity="EmailAddressResponseEntity"/>
         <relationship name="phoneNumbers" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="PhoneNumberResponseEntity" inverseName="contact" inverseEntity="PhoneNumberResponseEntity"/>
     </entity>
     <entity name="ContactsResponseEntity" representedClassName="ContactsResponseEntity" syncable="YES" codeGenerationType="class">
         <relationship name="contacts" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="ContactResponseEntity" inverseName="contact" inverseEntity="ContactResponseEntity"/>
+    </entity>
+    <entity name="EmailAddressResponseEntity" representedClassName="EmailAddressResponseEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <relationship name="contact" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ContactResponseEntity" inverseName="emailAddresses" inverseEntity="ContactResponseEntity"/>
     </entity>
     <entity name="PhoneNumberResponseEntity" representedClassName="PhoneNumberResponseEntity" syncable="YES" codeGenerationType="class">
         <attribute name="number" optional="YES" attributeType="String"/>
@@ -16,7 +21,8 @@
     </entity>
     <elements>
         <element name="ContactsResponseEntity" positionX="-238.8029174804688" positionY="126.8574829101562" width="128" height="58"/>
-        <element name="ContactResponseEntity" positionX="-54.09832763671875" positionY="319.7880859375" width="128" height="118"/>
+        <element name="ContactResponseEntity" positionX="-54.09832763671875" positionY="319.7880859375" width="128" height="133"/>
         <element name="PhoneNumberResponseEntity" positionX="140.4586181640625" positionY="149.28125" width="128" height="73"/>
+        <element name="EmailAddressResponseEntity" positionX="-320.369140625" positionY="365.7898254394531" width="128" height="73"/>
     </elements>
 </model>
