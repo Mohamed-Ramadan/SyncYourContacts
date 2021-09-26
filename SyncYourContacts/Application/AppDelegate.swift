@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // Request Contacts Access
-        CNContactStore().requestAccess(for: .contacts) { (access, error) in
+        let contactsStore = CNContactStore() 
+        contactsStore.requestAccess(for: .contacts) { (access, error) in
             print("Access: \(access)")
             //self.fetchContacts()
         }

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import ContactsUI
+import Contacts
 
 class ContactsTableViewController: UITableViewController {
         
@@ -17,11 +19,16 @@ class ContactsTableViewController: UITableViewController {
         self.title = "Contacts"
         self.navigationItem.largeTitleDisplayMode = .automatic
         
+        NotificationCenter.default.addObserver(self, selector: #selector(didChangeContacts), name: .CNContactStoreDidChange, object: nil)
         self.setupTableView()
         self.bind(to: viewModel)
     }
 
     // MARK: - Private Methods
+    @objc func didChangeContacts() {
+        self.viewModel.loadContacts()
+    }
+    
     private func setupTableView() {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         self.tableView.delegate = self
@@ -60,6 +67,16 @@ class ContactsTableViewController: UITableViewController {
      
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let contact = self.viewModel.contacts[indexPath.row]
+         
+        do {
+            let con = try CNContactStore().unifiedContact(withIdentifier: contact.identifier, keysToFetch: [])
+            let contactsVC = CNContactViewController(for: con)
+            self.navigationController?.pushViewController(contactsVC, animated: true)
+        } catch  {
+            print(error.localizedDescription)
+        }
+        
     }
     
 }
