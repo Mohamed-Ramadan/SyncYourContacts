@@ -16,6 +16,6 @@
 - Cache using Core Data 
   
 ## How to run this project:
-1- clone the repository 
-2- go to project directory
-3- open .xcproj file using XCode
+ * 1- clone the repository 
+ * 2- go to project directory
+ * 3- open .xcproj file using XCode
